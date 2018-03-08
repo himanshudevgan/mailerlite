@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const mailerlitecontroller = require('./../controller/mailerlite');
+router.get('/',  mailerlitecontroller.index);
 router.post('/addgroup',  mailerlitecontroller.addgroup);
 router.post('/addsubscriber',  mailerlitecontroller.addsubscriber);
 router.get('/viewallgroup',  mailerlitecontroller.viewallgroup);

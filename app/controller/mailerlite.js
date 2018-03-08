@@ -7,7 +7,9 @@ let https = require('https');
 let headers={ 'content-type': 'application/json','X-MailerLite-ApiKey': apiKey}
 const mailer = {
 
-
+    index: (req, res, next) => {
+        respond.success(res, successConst.OK);
+    },
     addgroup: async (req, res, next) => {
         try {
             let data = req.body
