@@ -1,0 +1,10 @@
+'use strict';
+const express = require('express');
+const router = express.Router();
+const mailerlitecontroller = require('./../controller/mailerlite');
+router.post('/addgroup',  mailerlitecontroller.addgroup);
+router.post('/addsubscriber',  mailerlitecontroller.addsubscriber);
+router.get('/viewallgroup',  mailerlitecontroller.viewallgroup);
+router.get('/viewsubscriber',  mailerlitecontroller.viewsubscriber);
+router.post('/addfield',  mailerlitecontroller.addfield);
+module.exports = router;
