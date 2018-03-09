@@ -5,6 +5,7 @@ const mailerlitecontroller = require('./../controller/mailerlite');
 router.get('/',  mailerlitecontroller.index);
 router.post('/addgroup',  mailerlitecontroller.addgroup);
 router.post('/addsubscriber',  mailerlitecontroller.addsubscriber);
+router.post('/addsubscribertogroup',  mailerlitecontroller.addsubscribertogroup);
 router.get('/viewallgroup',  mailerlitecontroller.viewallgroup);
 router.get('/viewsubscriber',  mailerlitecontroller.viewsubscriber);
 router.post('/addfield',  mailerlitecontroller.addfield);

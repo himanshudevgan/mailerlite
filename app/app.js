@@ -1,10 +1,18 @@
 'use strict';
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+
 const bodyParser = require('body-parser');
 require('dotenv').load();
 require('dotenv').config();
 const Route = require('./routes/routes');
+const grouproutes = require('./routes/grouproutes');
+const authroutes = require('./routes/auth');
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.DB, {
+   // useMongoClient: true
+});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -19,6 +27,8 @@ app.use((req, res, next) => {
    next();
 });
 app.use('/api/mailerlite', Route);
+app.use('/api/groups', grouproutes);
+app.use('/api', authroutes);
 
 app.use((error, req, res, next) => {
     if(error.name === 'ValidationError')
