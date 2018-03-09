@@ -12,16 +12,13 @@ const auth = {
     },
     login: async (req, res, next) => {
         try {
-            console.log("hit")
             const authService = new AuthService(req.body);
             const user = await authService.login();
             const resp = successConst.OK;
             resp.data = user;
             respond.success(res, resp);
         } catch (error) {
-            console.log("error",error)
            next(error);
-            
         }
     },
     signup: async (req, res, next) => {
