@@ -48,7 +48,6 @@ const mailer = {
     addsubscribertogroup: async (req, res, next) => {
         try {
             let data = req.body
-            console.log(data.tempaleType);
             let group = await Group.findOne({groupname:data.tempaleType},{mlgid:1})
             let reqs = await request('https://api.mailerlite.com/api/v2/groups/'+group.mlgid+'/subscribers', {
                 method: 'POST',
@@ -98,6 +97,7 @@ const mailer = {
     },
     addfield: async (req, res, next) => {
         try {
+            console.log(req.body)
             let data = req.body
             let reqs = await request('http://api.mailerlite.com/api/v2/fields', {
                 method: 'POST',
@@ -105,14 +105,13 @@ const mailer = {
                 data: data
             })
             const resp = successConst.OK;
-            resp.data = reqs.body;
+            resp.data = JSON.parse(reqs.body);
             respond.success(res, resp);
 
         } catch (error) {
             console.log(error)
         }
-    },
-
+    }
 
 
 };

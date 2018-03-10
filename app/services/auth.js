@@ -27,8 +27,8 @@ module.exports = class Auth {
         error = errorConst.INVALID_EMAIL_PASSWORD;
         throw error;
     }
-    async create(usr) {
-        let usr = await new User(usr);
+    async create() {
+        let usr = await new User(this.user);
          return  usr = await usr.save()
     }
 }

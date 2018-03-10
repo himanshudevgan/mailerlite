@@ -23,7 +23,8 @@ const auth = {
     },
     signup: async (req, res, next) => {
         try {
-            const usr = await authService.create(req.body);
+            const authService = new AuthService(req.body);
+            const usr = await authService.create();
             console.log("created")
             const resp = successConst.CREATED;
             resp.data = usr;

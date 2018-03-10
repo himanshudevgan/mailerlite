@@ -16,7 +16,7 @@ const group = {
                 }
         },
         getgroup: async () => {
-                let groups = await Group.find({});
+                let groups = await Group.find({active: true});
                 return groups
 
 
