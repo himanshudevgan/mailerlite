@@ -8,4 +8,5 @@ grouproutes.get('/getgroup',  groupcontroller.getgroup);
 grouproutes.get('/getfield',  groupcontroller.viewallfield);
 grouproutes.put('/deletegroup/:groupId', groupcontroller.deletegroup)
 grouproutes.put('/deletefield/:fieldId', groupcontroller.deletefield)
+grouproutes.post('/link',  groupcontroller.link);
 module.exports = grouproutes;

@@ -29,22 +29,7 @@ const mailer = {
             console.log(error)
         }
     },
-    addsubscriber: async (req, res, next) => {
-        try {
-            let data = req.body
-            let reqs = await request('https://api.mailerlite.com/api/v2/subscribers', {
-                method: 'POST',
-                headers: headers,
-                data: data
-            })
-            const resp = successConst.OK;
-            resp.data = reqs.body;
-            respond.success(res, resp);
-
-        } catch (error) {
-            console.log(error)
-        }
-    },
+    
     addsubscribertogroup: async (req, res, next) => {
         try {
             let data = req.body
@@ -105,6 +90,26 @@ const mailer = {
                 data: data
             })
             const resp = successConst.OK;
+            resp.data = JSON.parse(reqs.body);
+            respond.success(res, resp);
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    getCalculator: async (req, res, next) => {
+        try {
+            console.log(req.body)
+            let data = req.body
+            let reqs = await request('https://api.outgrow.co/api/v1/calculator?status=Live&type=Both&sort=alpha_asc', {
+                method: 'GET',
+                headers: { 'content-type': 'application/json',
+                'API-Key': '24d1e4cd5576db3e748e1e761b45f3'}
+            })
+            const resp = successConst.OK;
+            let body=JSON.parse(reqs.body);
+            console.log(body)
+            console.log(body.data.map(obj=>obj['id']));
             resp.data = JSON.parse(reqs.body);
             respond.success(res, resp);
 

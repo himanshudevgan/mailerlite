@@ -4,6 +4,7 @@ const respond = require('./../helper/response');
 const successConst = require('./../constants/success');
 const groupService = require('./../services/group');
 const Group = require('./../models/group');
+const clacGroup = require('./../models/calcgroup');
 let apiKey = process.env.apiKey;
 let headers={ 'content-type': 'application/json','X-MailerLite-ApiKey': apiKey}
 const group = {
@@ -77,6 +78,19 @@ const group = {
             })
             const resp = successConst.OK;
             resp.data = JSON.parse(reqs.body);
+            respond.success(res, resp);
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    link: async (req, res, next) => {
+        try {
+            let data = req
+            const group = await groupService.link(req.body);
+            const resp = successConst.OK;
+            resp.data = group
             respond.success(res, resp);
 
 

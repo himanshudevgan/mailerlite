@@ -1,5 +1,6 @@
 'use strict';
 const Group = require('./../models/group');
+const clacGroup = require('./../models/calcgroup');
 
 const group = {
 
@@ -21,6 +22,18 @@ const group = {
 
 
         },
+        link: async (data) => {
+                try {
+                let calcgroup = new clacGroup(data);
+                return await calcgroup.save();
+
+                } catch (err) {
+                        console.log(err);
+                }
+               
+        },
+        
+
              
 }
 module.exports = group;

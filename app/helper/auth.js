@@ -31,12 +31,6 @@ const auth = {
                 return true;
             }
             return false ;
-
-
     },
-
-
-
-    
 };
 module.exports = auth;
